@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liberia's Population 2008</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@0;1&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
+</head>
+
+<body>
+    <main>
+
+        <header>
+            <div>census2008</div>
+            <div>
+                <span>Home</span> <span>Download</span>
+            </div>
+        </header>
+        <div id="gridData">
+            <div id="totalPo">
+                <div style="background-color: #519872; width: 50px; height:50px; border-radius: 5%;"></div>
+                <div>
+                    <div> <small style="color: #828282;">Total Population</small></div>
+                    <div id="popu"></div>
+                </div>
+            </div>
+            <div id="female">
+                <div style="background-color: #519872; border-radius: 5%;"><img src="./female.png" alt="female"></div>
+                <div>
+                    <div> <small style="color: #828282;">FEMALE</small></div>
+                    <div id="fem"></div>
+                </div>
+            </div>
+            <div id="male">
+                <div style="background-color: #519872; border-radius: 5%;"><img src="./male.png" alt="female"></div>
+                <div>
+                    <div> <small style="color: #828282;">MALE</small></div>
+                    <div id="mal"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="countiesPopu">
+            <!-- Bar-Chart of total county -->
+
+            <div id="bar-chart"><canvas id="bar1-chart" width="150" height="70"></canvas></div>
+
+            <!-- doughnutChart of total male and female -->
+            <div id="doughnutChart">
+                <canvas id="doughnut-chart" width="800" height="450"></canvas>
+            </div>
+        </div>
+        <!-- Distribution of Population by District -->
+        <div id="distrByDis">
+            <div id="dpd">
+                <div>Distribution of Population by District</div>
+                <!-- Select district -->
+                <div>
+                    <select>
+                    <option value="selection">selection</option>
+                    <option value="selection">selection1</option>
+                    <option value="selection">selection2</option>
+                    <option value="selection">selection3</option>
+                    <option value="selection">selection4</option>
+                    <option value="selection">selection5</option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+        <!-- Download 2008 Census data -->
+        <div id="downloadData">
+            <!-- display flex txt and icon -->
+            <div>Download 2008 Census data</div>
+            <!-- white bgcol and display flex -->
+            <div id="arrowTxt">
+                <div id="arrow"><img src=" ./download.png" width="40" height="30"></div>
+
+                <div id="dwn">DOWNLOAD</div>
+            </div>
+        </div>
+        <!-- Distribution of Population by Number of Households -->
+        <div id="distrByHou">
+            <div id="housesData"></div>
+            <div id="mostPopCoun"></div>
+        </div>
+
+    </main>
+
+    <script src="./script.js "></script>
+</body>
+
+</html>
