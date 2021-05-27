@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: #519872;
+}
+
 body {
     background-color: #b3afaf;
     font-family: 'Source Code Pro', monospace;
