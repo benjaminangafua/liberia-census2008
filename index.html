@@ -8,7 +8,6 @@
     <title>Liberia's Population 2008</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@0;1&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
 </head>
@@ -19,7 +18,7 @@
         <header>
             <div>census2008</div>
             <div>
-                <span>Home</span> <span>Download</span>
+                <span>Home</span> <span><a href="#">Download</a></span>
             </div>
         </header>
         <div id="gridData">
@@ -49,11 +48,11 @@
         <div id="countiesPopu">
             <!-- Bar-Chart of total county -->
 
-            <div id="bar-chart"><canvas id="bar1-chart" width="150" height="70"></canvas></div>
+            <div id="bar-chart"><canvas id="bar1-chart"></canvas></div>
 
             <!-- doughnutChart of total male and female -->
             <div id="doughnutChart">
-                <canvas id="doughnut-chart" width="800" height="450"></canvas>
+                <canvas id="doughnut-chart" width="200" height="100"></canvas>
             </div>
         </div>
         <!-- Distribution of Population by District -->
@@ -81,8 +80,7 @@
             <!-- white bgcol and display flex -->
             <div id="arrowTxt">
                 <div id="arrow"><img src=" ./download.png" width="40" height="30"></div>
-
-                <div id="dwn">DOWNLOAD</div>
+                <div id="dwn"> DOWNLOAD</div>
             </div>
         </div>
         <!-- Distribution of Population by Number of Households -->

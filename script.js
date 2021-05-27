@@ -1,52 +1,47 @@
 fetch("./census.json")
     .then((response) => response.json())
     .then((data) => {
-        var popu = data.population;
+        const POPULATION = data.population;
 
-        var population = 0;
-        var totalMale = 0;
-        var totalFemale = 0;
-        for (var i = 0; i < popu.length; i++) {
+        var initialValue = 0;
+        //Computing total female
+        let total_female = POPULATION.reduce(function(accumulator, currentValue) {
+                return accumulator + currentValue.female
+            }, initialValue)
+            //Print total  Female 
+        document.getElementById("fem").insertAdjacentHTML("beforebegin", ` <b>${total_female}</b>`)
 
-            var ma = popu[i].male;
-            var fe = popu[i].female;
-            //Total Gender
-            var gender = ma + fe;
-            population = population + gender;
+        //Computing total male
+        let total_male = POPULATION.reduce(function(accumulator, currentValue) {
+            return accumulator + currentValue.male
+        }, initialValue)
 
-            //Total male
-            totalMale = totalMale + ma;
+        //Print total male 
+        document.getElementById("mal").insertAdjacentHTML("beforebegin", `<b> ${total_male}</b>`)
 
-            //Total female
-            totalFemale = totalFemale + fe;
-        }
-        console.log(totalFemale)
+        //Computing total population
+        let total_population = total_male + total_female;
 
-        //Total Male and Female Print
-        document.getElementById("popu").insertAdjacentHTML("afterbegin", ` 
-            <b>${population}</b>      
-        `)
+        // Print total population
+        document.getElementById("popu").insertAdjacentHTML("afterbegin", `<b>${total_population}</b>`)
 
-        //Total Male Print
-        document.getElementById("mal").insertAdjacentHTML("beforebegin", `
-        <b> ${totalMale}</b>        
-        `)
-
-        //Total Female Print
-        document.getElementById("fem").insertAdjacentHTML("beforebegin", ` <b>${totalFemale}</b>        
-        `)
+        /*get the array of counties without duplicate for the label on the chart*/
+        let index
+        let get_county_array = POPULATION.map(function(counties) {
+            return counties.county;
+        })
+        let county = get_county_array.filter((county, index) => get_county_array.indexOf(county) === index)
 
 
-
-        //Doughnut chart
-        new Chart(document.getElementById("doughnut-chart"), {
+        // Doughnut chart
+        var DOUGHNUT = new Chart(document.getElementById("doughnut-chart"), {
             type: 'doughnut',
             data: {
                 labels: ["MALE", "FEMALE"],
                 datasets: [{
                     label: "Population (millions)",
                     backgroundColor: ["#B1D2C2", "#F0F2EF"],
-                    data: [totalMale, totalFemale]
+                    data: [total_male, total_female]
                 }]
             },
             options: {
@@ -56,17 +51,29 @@ fetch("./census.json")
                 }
             }
         });
-        //Bar Chart 
 
 
-        new Chart(document.getElementById("bar1-chart"), {
+
+
+
+
+
+
+
+
+
+
+        //Bar Chart  
+        var BAR = new Chart(document.getElementById("bar1-chart"), {
             type: 'bar',
             data: {
-                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                labels: county,
                 datasets: [{
-                    label: "Population (millions)",
+                    label: county.forEach((c) => {
+                        return c;
+                    }),
                     backgroundColor: "#B1D2C2",
-                    data: [2478, 5267, 734, 784, 433],
+                    data: [250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 490, 510, 530], //data for labels (1st label)
                     borderRadius: 20,
                     width: 1,
                 }]
