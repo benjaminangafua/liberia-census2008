@@ -45,22 +45,15 @@ fetch("./census.json")
                 }]
             },
             options: {
-                title: {
-                    display: true,
-                    text: 'Predicted world population (millions) in 2050'
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "bottom",
+                        borderRadius: 6
+                    }
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
 
 
         //Bar Chart  
@@ -88,11 +81,51 @@ fetch("./census.json")
                         }
                     }
                 },
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: 'Predicted world population (millions) in 2050'
-                },
+                plugins: {
+                    legend: {
+                        display: false,
+
+                    }
+                }
+
             }
         });
+
+
+        //Bar Chart  
+        var BAR = new Chart(document.getElementById("bar-chart"), {
+            type: 'bar',
+            data: {
+                labels: county,
+                datasets: [{
+                    label: county.forEach((c) => {
+                        return c;
+                    }),
+                    backgroundColor: "#B1D2C2",
+                    data: [250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 490, 510, 530], //data for labels (1st label)
+                    borderRadius: 20,
+                    width: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        max: 1000,
+                        min: 0,
+                        ticks: {
+                            stepSize: 250
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+
+                    }
+                }
+
+            }
+        });
+
+
     })

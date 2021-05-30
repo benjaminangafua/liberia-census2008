@@ -68,7 +68,7 @@ header {
     gap: 2%;
 }
 
-#countiesPopu>#bar-chart,
+#countiesPopu>.bar-cha,
 #doughnutChart {
     background-color: white;
     box-shadow: rgb(2, 2, 2);
@@ -82,7 +82,7 @@ header {
 }
 
 #distrByDis {
-    display: flex;
+    /* display: flex; */
     box-shadow: rgb(2, 2, 2);
     background-color: white;
     margin-left: 5%;
@@ -150,10 +150,10 @@ header {
     height: 400px;
 }
 
-#bar-chart {
+.bar-chart {
     position: relative;
-    margin: auto;
-    width: 80%;
+    margin: -4% 2% 2% 2%;
+    width: 50%;
     height: 100%;
 }
 
