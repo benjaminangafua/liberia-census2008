@@ -67,8 +67,9 @@ fetch("./census.json")
                     }),
                     backgroundColor: "#B1D2C2",
                     data: [250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 490, 510, 530], //data for labels (1st label)
-                    borderRadius: 20,
+                    borderRadius: 5,
                     width: 1,
+                    barThickness: 18
                 }]
             },
             options: {
@@ -103,8 +104,9 @@ fetch("./census.json")
                     }),
                     backgroundColor: "#B1D2C2",
                     data: [250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 490, 510, 530], //data for labels (1st label)
-                    borderRadius: 20,
+                    borderRadius: 5,
                     width: 1,
+                    barThickness: 18
                 }]
             },
             options: {
@@ -127,5 +129,40 @@ fetch("./census.json")
             }
         });
 
+        //Bar Chart  
+        var BAR = new Chart(document.getElementById("houses-chart"), {
+            type: 'bar',
+            data: {
+                labels: county,
+                datasets: [{
+                    label: county.forEach((c) => {
+                        return c;
+                    }),
+                    backgroundColor: "#B1D2C2",
+                    data: [250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 490, 510, 530], //data for labels (1st label)
+                    borderRadius: 5,
+                    width: 1,
+                    barThickness: 18
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        max: 1000,
+                        min: 0,
+                        ticks: {
+                            stepSize: 250
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+
+                    }
+                }
+
+            }
+        });
 
     })

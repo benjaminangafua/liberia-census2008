@@ -71,12 +71,12 @@
                 </select>
                 </div>
             </div> <br> <br>
-            <div class="bar-chart"><canvas id="bar-chart"></canvas></div>
+            <div class="district-chart"><canvas id="bar-chart"></canvas></div>
         </div>
         <!-- Download 2008 Census data -->
         <div id="downloadData">
             <!-- display flex txt and icon -->
-            <div>Download 2008 Census data</div>
+            <div> Download 2008 Census data</div>
             <!-- white bgcol and display flex -->
             <div id="arrowTxt">
                 <div id="arrow"><img src=" ./download.png" width="40" height="30"></div>
@@ -85,8 +85,16 @@
         </div>
         <!-- Distribution of Population by Number of Households -->
         <div id="distrByHou">
-            <div id="housesData"></div>
+            <div id="housesData">
+                <div>Distribution of Population by Number of Households <span><select name="" id=""><option value="">Select</option>
+                    <option value="">Lofa</option>
+                    <option value="">Montserrado</option>
+                    <option value="">Nimba</option>
+                    <option value="">River Gee</option></select></span></div><br> <br>
+                <div class="houses-chart"><canvas id="houses-chart"></canvas></div>
+            </div>
             <div id="mostPopCoun"></div>
+
         </div>
 
     </main>
