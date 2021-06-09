@@ -26,14 +26,14 @@ fetch("./census.json")
 
 
 
-        // let district_option = document.querySelector("#disOptn")
-        // district_option.addEventListener("change", (ele) => {
+        let district_option = document.querySelector("#disOptn")
+        district_option.addEventListener("change", (ele) => {
 
-        // })
-        // county.forEach((c) => {
-        //     district_option.insertAdjacentHTML("beforeend", `<option>${c}</option>
-        // `)
-        // })
+        })
+        county.forEach((c) => {
+            district_option.insertAdjacentHTML("beforeend", `<option>${c}</option>
+        `)
+        })
 
         let houses_option = document.querySelector("#housesOptn")
             // district_option.addEventListener("change", (ele) => {
