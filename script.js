@@ -6,15 +6,20 @@ fetch("./census.json")
         //Computing total female
         let total_female = POPULATION.reduce((acc, value) => (acc + value.female), 0)
             //Print total  Female 
-        document.getElementById("femaleData").insertAdjacentHTML("beforebegin", ` <b>${total_female}</b>`)
+        const FEMALE = new Intl.NumberFormat().format(total_female)
+        document.getElementById("femaleData").insertAdjacentHTML("beforebegin", ` <b>${FEMALE}</b>`)
 
         //Computing total male
         let total_male = POPULATION.reduce((acc, value) => (acc + value.male), 0)
-        document.getElementById("mal").insertAdjacentHTML("beforebegin", `<b> ${total_male}</b>`)
+        const MALE = new Intl.NumberFormat().format(total_male)
+
+        document.getElementById("mal").insertAdjacentHTML("beforebegin", `<b> ${MALE}</b>`)
 
         //Computing total population
         let total_population = total_male + total_female;
-        document.getElementById("popu").insertAdjacentHTML("afterbegin", `<b>${total_population}</b>`)
+        const POPULATION_TOTAL = new Intl.NumberFormat().format(total_population)
+
+        document.getElementById("popu").insertAdjacentHTML("afterbegin", `<b>${POPULATION_TOTAL}</b>`)
 
         //get the array of counties without duplicate for the label on the chart
         let county = POPULATION.reduce((acc, value) => {
