@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@0;1&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js" defer></script>
+
 </head>
 
 <body>
@@ -18,26 +19,26 @@
         <header>
             <div>census2008</div>
             <div>
-                <span>Home</span> <span><a href="#">Download</a></span>
+                <span><a href="#">Home</a> </span> <span><a href="#arrow #dwn">Download</a></span>
             </div>
         </header>
         <div id="gridData">
             <div id="totalPo">
-                <div style="background-color: #519872; width: 50px; height:50px; border-radius: 5%;"></div>
+                <div style="background-color: #376e51; width: 50px; height:50px; border-radius: 5%;"></div>
                 <div>
                     <div> <small style="color: #828282;">Total Population</small></div>
                     <div id="popu"></div>
                 </div>
             </div>
             <div id="female">
-                <div style="background-color: #519872; border-radius: 5%;"><img src="./female.png" alt="female"></div>
+                <div style="background-color: #376e51; border-radius: 5%;"><img src="./female.png" alt="female"></div>
                 <div>
                     <div> <small style="color: #828282;">FEMALE</small></div>
-                    <div id="fem"></div>
+                    <div id="femaleData"></div>
                 </div>
             </div>
             <div id="male">
-                <div style="background-color: #519872; border-radius: 5%;"><img src="./male.png" alt="female"></div>
+                <div style="background-color: #376e51; border-radius: 5%;"><img src="./male.png" alt="female"></div>
                 <div>
                     <div> <small style="color: #828282;">MALE</small></div>
                     <div id="mal"></div>
@@ -48,11 +49,12 @@
         <div id="countiesPopu">
             <!-- Bar-Chart of total county -->
 
-            <div class="bar-cha"><canvas id="bar1-chart"></canvas></div>
+            <div class="bar-cha"><canvas id="county-chart"></canvas></div>
 
             <!-- doughnutChart of total male and female -->
             <div id="doughnutChart">
                 <canvas id="doughnut-chart" width="200" height="100"></canvas>
+                <!-- <canvas id="doughnut-chart" width="800" height="450"></canvas> -->
             </div>
         </div>
         <!-- Distribution of Population by District -->
@@ -61,17 +63,13 @@
                 <div>Distribution of Population by District</div>
                 <!-- Select district -->
                 <div>
-                    <select>
-                    <option value="selection">selection</option>
-                    <option value="selection">selection1</option>
-                    <option value="selection">selection2</option>
-                    <option value="selection">selection3</option>
-                    <option value="selection">selection4</option>
-                    <option value="selection">selection5</option>
-                </select>
+                    <select id="disOptn">
+                        <option value="selection">selection</option>
+                    </select>
                 </div>
             </div> <br> <br>
-            <div class="district-chart"><canvas id="bar-chart"></canvas></div>
+            <div class="district-chart"> <canvas id="district" width="400" height="150"></canvas></div>
+
         </div>
         <!-- Download 2008 Census data -->
         <div id="downloadData">
@@ -79,18 +77,24 @@
             <div> Download 2008 Census data</div>
             <!-- white bgcol and display flex -->
             <div id="arrowTxt">
-                <div id="arrow"><img src=" ./download.png" width="40" height="30"></div>
-                <div id="dwn"> DOWNLOAD</div>
+                <a href="">
+                    <div id="arrow"><img src=" ./download.png" width="40" height="30"></div>
+                </a>
+                <a href="" style="color:#519872;">
+                    <div id="dwn">DOWNLOAD</div>
+                </a>
             </div>
         </div>
         <!-- Distribution of Population by Number of Households -->
         <div id="distrByHou">
             <div id="housesData">
-                <div>Distribution of Population by Number of Households <span><select name="" id=""><option value="">Select</option>
-                    <option value="">Lofa</option>
-                    <option value="">Montserrado</option>
-                    <option value="">Nimba</option>
-                    <option value="">River Gee</option></select></span></div><br> <br>
+                <div>Distribution of Population by Number of Households
+                    <span>
+                        <select id="housesOptn">
+                            <option value="">District</option>
+                        </select>
+                    </span>
+                </div><br> <br>
                 <div class="houses-chart"><canvas id="houses-chart"></canvas></div>
             </div>
             <div id="mostPopCoun"></div>

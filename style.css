@@ -26,7 +26,7 @@ header {
     display: grid;
     grid-template-columns: 29% 27% 30%;
     margin-left: 5%;
-    gap: 3.5%;
+    gap: 3%;
 }
 
 #gridData>#totalPo,
@@ -78,26 +78,33 @@ header {
 }
 
 #doughnutChart {
-    background-color: #519872;
+    background-color: #376e51;
     padding-top: 50px;
 }
 
 #distrByDis {
-    /* display: flex; */
+    display: block;
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     background-color: white;
     margin-left: 5%;
     border-radius: 2%;
     margin-top: 2%;
-    width: 85%;
+    width: 87%;
     height: 400px;
+}
+
+.district-chart {
+    position: static;
+    margin: -4% 2% 2% 2%;
+    width: 64vw;
+    height: 30vh;
 }
 
 #distribute-district {
     display: grid;
     grid-template-columns: 70% 20%;
     margin-left: 5%;
-    padding-top: 5%;
+    padding-top: 2%;
     width: 100%;
 }
 
@@ -154,13 +161,6 @@ header {
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     width: 100%;
     height: 400px;
-}
-
-.district-chart {
-    position: relative;
-    margin: -4% 2% 2% 2%;
-    width: 45vw;
-    /* height: 100px; */
 }
 
 .houses-chart {
