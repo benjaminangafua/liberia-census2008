@@ -1,3 +1,5 @@
+let district_option = document.querySelector("#disOptn")
+
 fetch("./census.json")
     .then((response) => response.json())
     .then((data) => {
@@ -31,7 +33,6 @@ fetch("./census.json")
 
 
 
-        let district_option = document.querySelector("#disOptn")
         district_option.addEventListener("change", (ele) => {
 
         })
@@ -172,7 +173,7 @@ fetch("./census.json")
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: 'Predicted world population (millions) in 2050'
+                    text: 'Predicted Liberia population (millions) in 2050'
                 }
             }
         });
@@ -213,3 +214,25 @@ fetch("./census.json")
         });
     })
     // .catch(error => console.log({ error }))
+
+function GetDistrict() {
+    console.log(district_option.value)
+    fetch('/census.json')
+        .then(res => res.json())
+        .then(data => {
+            const POPULATION_DATA = data.population
+
+
+
+            // POPULATION_DATA.forEach(el => {
+            //     console.log(el.district)
+            // })
+
+            // let total_district_per_county = POPULATION_DATA.forEach((ele) => {
+            //     console.log(ele.county)
+            // })
+
+        })
+
+
+}
