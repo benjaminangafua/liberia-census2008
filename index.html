@@ -18,7 +18,7 @@
 
         <header>
             <div>census2008</div>
-            <div>
+            <div style="font-family: Arial;">
                 <span><a href="#">Home</a> </span> <span><a href="#arrow #dwn">Download</a></span>
             </div>
         </header>
@@ -63,8 +63,7 @@
                 <div>Distribution of Population by District</div>
                 <!-- Select district -->
                 <div>
-                    <select onchange="GetDistrict()" id="disOptn">
-                        <option value="selection">select</option>
+                    <select onchange="GetDistrict()" id="disOptn"> 
                     </select>
                 </div>
             </div> <br> <br>
@@ -78,7 +77,7 @@
             <!-- white bgcol and display flex -->
             <div id="arrowTxt">
                 <a href="">
-                    <div id="arrow"><img src=" ./download.png" width="40" height="30"></div>
+                    <div id="arrow"><img src=" ./download.png" width="29" height="30"></div>
                 </a>
                 <a href="" style="color:#519872;">
                     <div id="dwn">DOWNLOAD</div>
@@ -88,16 +87,55 @@
         <!-- Distribution of Population by Number of Households -->
         <div id="distrByHou">
             <div id="housesData">
-                <div>Distribution of Population by Number of Households
+                <div id="housesText">Distribution of Population by Number of Households
                     <span>
-                        <select id="housesOptn">
-                            <option value="">District</option>
+                        <select id="housesOptn"> 
                         </select>
                     </span>
                 </div><br> <br>
                 <div class="houses-chart"><canvas id="houses-chart"></canvas></div>
             </div>
-            <div id="mostPopCoun"></div>
+            <div id="mostPopCoun">
+                <div>Counties with most males & females
+                </div>
+                <br><br>
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>County</th>
+                                <th>F</th>
+                                <th>M</th>
+                            </tr>
+                            <tr>
+                                <th>Montserrado</th>
+                                <th>2000000</th>
+                                <th>2000000</th>
+                            </tr>
+                            <tr>
+                                <th>Nimba</th>
+                                <th>2000000</th>
+                                <th>2000000</th>
+                            </tr>
+                            <tr>
+                                <th>Bomi</th>
+                                <th>2000000</th>
+                                <th>2000000</th>
+                            </tr>
+                            <tr>
+                                <th>Lofa</th>
+                                <th>2000000</th>
+                                <th>2000000</th>
+                            </tr>
+                            <tr>
+                                <th>Grand Bassa</th>
+                                <th>2000000</th>
+                                <th>2000000</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         </div>
 

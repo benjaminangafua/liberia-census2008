@@ -87,7 +87,7 @@ fetch("./census.json")
                 labels: county,
                 datasets: [{
                     label: "Population Per County",
-                    backgroundColor: "#B1D2C2",
+                    backgroundColor: "#519872",
                     data: total_population_per_county, //data for labels (1st label)
                     borderRadius: 5,
                     width: 1,
@@ -115,7 +115,8 @@ fetch("./census.json")
             }
         });
         //Bar Chart for Distribution of Population by District
-        /*new Chart(document.getElementById("district"), {
+        /**
+         * new Chart(document.getElementById("district"), {
             type: 'bar',
             data: {
                 labels: county,
@@ -146,14 +147,14 @@ fetch("./census.json")
             },
             aspectRatio: 2.5
         });
-*/
+        **/
         new Chart(document.getElementById("district"), {
             type: 'bar',
             data: {
                 labels: county,
                 datasets: [{
                     label: "Population Per District",
-                    backgroundColor: "#B1D2C2",
+                    backgroundColor: "#519872",
                     data: total_population_per_county,
                     borderRadius: 5,
                     width: 1,
@@ -173,7 +174,7 @@ fetch("./census.json")
                 legend: { display: false },
                 title: {
                     display: true,
-                    text: 'Predicted Liberia population (millions) in 2050'
+                    text: 'Predicted Liberia population (millions) in 2008'
                 }
             }
         });
@@ -183,10 +184,8 @@ fetch("./census.json")
             data: {
                 labels: county,
                 datasets: [{
-                    label: county.forEach((c) => {
-                        return c;
-                    }),
-                    backgroundColor: "#B1D2C2",
+                    label: "Population Per District",
+                    backgroundColor: "#519872",
                     data: total_population_per_county,
                     borderRadius: 5,
                     width: 1,
@@ -217,22 +216,23 @@ fetch("./census.json")
 
 function GetDistrict() {
     console.log(district_option.value)
-    fetch('/census.json')
-        .then(res => res.json())
+    fetch('/census.json').then(res => res.json())
         .then(data => {
             const POPULATION_DATA = data.population
-
-
-
-            // POPULATION_DATA.forEach(el => {
-            //     console.log(el.district)
-            // })
-
-            // let total_district_per_county = POPULATION_DATA.forEach((ele) => {
-            //     console.log(ele.county)
-            // })
-
+            let findCounty = POPULATION_DATA.forEach(ele => {
+                console.log(`${ele.county}: ${ele.district}`);
+            })
+            console.log(findCounty)
+                // let findCounty = POPULATION_DATA.reduce((acc, value) => {
+                //     if (acc.indexOf(value.county) === -1) {
+                //         acc.push(`${acc[value.county]}${value.district}`)
+                //     }
+                //     return acc
+                // }, [])
         })
+}
 
-
+// The five highest populated counties
+function FindHighestPopulationCounties() {
+    "mostPopCoun"
 }
