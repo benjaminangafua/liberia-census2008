@@ -30,11 +30,9 @@ header {
 }
 
 select {
-    border-radius: 2px;
-    /* height: 35px; */
     text-align: center;
     font-size: larger;
-    border: solid #B1D2C2;
+    /* border: solid #B1D2C2; */
 }
 
 #gridData>#totalPo,
@@ -109,41 +107,41 @@ select {
 }
 
 #distribute-district {
-    display: grid;
-    grid-template-columns: 70% 20%;
-    margin-left: 5%;
-    padding-top: 2%;
-    width: 100%;
+    /* margin-left: 5%; */
+    padding: 5% 0% 0% 5%;
 }
 
 #downloadData {
-    display: flex;
-    background-color: #519872;
-    margin-left: 5%;
+    display: grid;
+    grid-template-columns: 60% 30%;
+    justify-content: center;
     margin-top: 2%;
+    padding: 2%;
+    background-color: #519872;
     color: bisque;
-    padding: 2% 4% 4% 4%;
+    margin-left: 5%;
     border-radius: 5px;
     width: 87.2%;
-    height: 60px;
 }
 
 #downloadData>div {
+    padding-top: 3%;
     font-size: 25px;
     font-weight: bolder;
 }
 
 #arrowTxt {
-    display: flex;
+    display: grid;
+    grid-template-columns: 13% 35%;
     background-color: white;
-    text-align: center;
+    justify-content: center;
     border-radius: 2%;
     color: #519872;
-    gap: 8%;
+    /* gap: 2%; */
+    margin-left: 25%;
     border-radius: 5px;
-    margin: -1% auto 0% 40%;
-    padding: 1% 3% 4% 1%;
-    height: 80%;
+    padding: 5% 0%;
+    width: 70%;
 }
 
 #dwn {
@@ -154,7 +152,8 @@ select {
     background-color: #519872;
     height: 35px;
     width: 40px;
-    /* padding-bottom: -8%; */
+    text-align: center;
+    margin-left: -30px;
     border-radius: 5px;
 }
 
@@ -190,17 +189,4 @@ select {
 #mostPopCoun {
     padding: 5% 0% 0% 5%;
     text-align: left;
-}
-
-@media (max-width:400px) {
-    #arrowTxt {
-        display: flex;
-        background-color: white;
-        text-align: center;
-        border-radius: 5%;
-        color: #519872;
-        margin: 0;
-        padding: 1% 2% 19% 2%;
-        height: 80%;
-    }
 }
