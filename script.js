@@ -210,8 +210,13 @@ function GetSelectedCounty() {
 }
 //Bar chart for districts
 function DisplayDistricts(districts_name, total_disticts_population) {
+    var ctx = document.getElementById('district').getContext('2d')
 
-    new Chart(document.getElementById("district"), {
+    if (window.chart != undefined) {
+        window.chart.destroy();
+    }
+
+    chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: districts_name,
