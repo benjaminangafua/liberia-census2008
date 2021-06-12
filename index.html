@@ -62,7 +62,7 @@
             <div id="distribute-district">
                 <span>Distribution of Population by District </span>
                 <!-- Select district -->
-                <span><select onchange="GetDistrict()" id="disOptn"></select></span>
+                <span><select onchange="DisplayDistrictsPopulation()" id="county-districts-selection"></select></span>
             </div>
             <br> <br>
             <div class="district-chart"> <canvas id="district" width="400" height="150"></canvas></div>
@@ -74,7 +74,7 @@
             <div> Download 2008 Census data</div>
             <!-- white bgcol and display flex -->
             <div id="arrowTxt">
-                <a href="">
+                <a href="./census.json" title="download census 2008" download="census.json">
                     <div id="arrow"><img src=" ./download.png" width="29" height="30"></div>
                 </a>
                 <a href="" style="color:#519872;">
@@ -85,11 +85,11 @@
         <!-- Distribution of Population by Number of Households -->
         <div id="distrByHou">
             <div id="housesData">
-                <div id="housesText">Distribution of Population by Number of Households
-                    <span>
-                        <select id="housesOptn"> 
-                        </select>
-                    </span>
+                <div id="housesText">
+                    <span>Distribution of Population by House </span>
+                    <!-- Select district -->
+                    <span><select onchange="DisplayHousesPopulation()" id="county-houses-selection"></select></span>
+
                 </div><br> <br>
                 <div class="houses-chart"><canvas id="houses-chart"></canvas></div>
             </div>
@@ -136,7 +136,6 @@
             </div>
 
         </div>
-
     </main>
 
     <script src="./script.js "></script>
