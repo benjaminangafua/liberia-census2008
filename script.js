@@ -52,7 +52,7 @@ function CalculateTotalFemale(populationData) {
     document.getElementById("femaleData").insertAdjacentHTML("beforebegin", ` <b>${FEMALE}</b>`)
     return total_female
 }
-//Computing total maleth
+//Computing total male
 function CalculateTotalMale(populationData) {
     let total_male = populationData.reduce((acc, value) => (acc + value.male), 0)
         //Print total  Female 
@@ -206,15 +206,15 @@ function DisplayDistricts(districts_name, total_disticts_population) {
             }]
         },
         options: {
-            scales: {
-                y: {
-                    max: 970000,
-                    min: 10,
-                    ticks: {
-                        stepSize: 5000
-                    }
-                }
-            },
+            // scales: {
+            //     // y: {
+            //     //     max: 970000,
+            //     //     min: 10,
+            //     //     ticks: {
+            //     //         stepSize: 100
+            //     //     }
+            //     // }
+            // },
             legend: { display: false },
             title: {
                 display: true,
@@ -253,15 +253,15 @@ function DisplayHouseHolds(population_county, population_per_county) {
             }]
         },
         options: {
-            scales: {
-                y: {
-                    max: 240000,
-                    min: 0,
-                    ticks: {
-                        stepSize: 20000
-                    }
-                }
-            },
+            // scales: {
+            //     y: {
+            //         max: 140000,
+            //         min: 0,
+            //         ticks: {
+            //             stepSize: 1000
+            //         }
+            //     }
+            // },
             plugins: {
                 legend: {
                     display: true,
