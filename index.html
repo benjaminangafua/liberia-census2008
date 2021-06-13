@@ -61,7 +61,9 @@
             <div id="distribute-district">
                 <span>Distribution of Population by District </span>
                 <!-- Select district -->
-                <span><select onchange="DisplayDistrictsPopulation()" id="county-districts-selection"></select></span>
+                <span><select onchange="DisplayDistrictsPopulation()" id="county-districts-selection"> 
+                    <option value="select"disabled>Select</option>
+                </select></span>
             </div>
             <br> <br>
             <div class="district-chart"> <canvas id="district" width="400" height="150"></canvas></div>
@@ -87,7 +89,9 @@
                 <div id="housesText">
                     <span>Distribution of Population by House </span>
                     <!-- Select district -->
-                    <span><select onchange="DisplayHousesPopulation()" id="county-houses-selection"></select></span>
+                    <span><select onchange="DisplayHousesPopulation()" id="county-houses-selection">
+                    <option value="select" disabled>Select</option>
+                    </select></span>
 
                 </div><br> <br>
                 <div class="houses-chart"><canvas id="houses-chart"></canvas></div>

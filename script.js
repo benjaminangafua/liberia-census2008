@@ -244,7 +244,7 @@ function DisplayHouseHolds(population_county, population_per_county) {
         data: {
             labels: population_county,
             datasets: [{
-                label: "Population Per District",
+                label: "Population Per Households",
                 backgroundColor: "#519872",
                 data: population_per_county,
                 borderRadius: 5,
