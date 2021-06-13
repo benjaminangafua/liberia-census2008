@@ -13,6 +13,7 @@ fetch("./census.json")
 
         const HOUSEHOLD = data.households;
         raw_households_data.push(HOUSEHOLD);
+        FindHighestPopulationCounties(POPULATION)
 
         //Computing total female
         let female = CalculateTotalFemale(POPULATION);
@@ -160,7 +161,7 @@ function GetDropdownOfCounties(counties, option) {
 //Dropdown for counties for population data
 function GetSelectedCounty() {
     let county_districts_option = county_districts_selection.value;
-    console.log(county_districts_option)
+    // console.log(county_districts_option)
 
     let districts_name = [];
     let total_disticts_population = []
@@ -275,7 +276,7 @@ function DisplayHouseHolds(population_county, population_per_county) {
 //Select county for household count
 function GetSelectedCountyForHouseHolds() {
     let county_houses_option = county_households_selection.value;
-    console.log(county_houses_option)
+    // console.log(county_houses_option)
 
     let settlement_name = [];
     let total_households_population = []
@@ -300,8 +301,13 @@ function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
     return households_data
 }
 // The five highest populated counties  
-function FindHighestPopulationCounties() {
-    "mostPopCoun"
+function FindHighestPopulationCounties(POPULATION) {
+    let county_male = {};
+    let county_female = {};
+    POPULATION.forEach(ele => {
+        county_male[ele.county] = ele.male
+        county_female[ele.county] = ele.female
+    })
 
+    console.log(parseInt(county_male));
 }
-FindHighestPopulationCounties()

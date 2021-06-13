@@ -190,3 +190,12 @@ select {
     padding: 5% 0% 0% 5%;
     text-align: left;
 }
+
+@media (max-width: 720px) {
+    body {
+        display: block;
+    }
+    b {
+        font-size: 12;
+    }
+}
