@@ -292,15 +292,6 @@ function DisplayHouseHolds(county, male, female) {
             ]
         },
         options: {
-            // scales: {
-            //     y: {
-            //         max: 140000,
-            //         min: 0,
-            //         ticks: {
-            //             stepSize: 1000
-            //         }
-            //     }
-            // },
             plugins: {
                 legend: {
                     display: true,
@@ -343,7 +334,7 @@ function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
     })
     return households_data
 }
-// The five highest populated counties  
+// The Five highest populated counties  
 function FindHighestPopulationCounties() {
     let counties = GetSelectedCountyForHouseHolds()
     console.log(counties)
