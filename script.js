@@ -244,6 +244,7 @@ const DisplayDistrictsPopulation = () => {
     DisplayDistricts(district[0], district[1], district[2])
 }
 
+//Get counties for households without duplicate
 function GetCountiesForHouseHolds(population) {
     let eachCounty = population.reduce((acc, value) => {
         if (acc.indexOf(value.county) === -1) {
