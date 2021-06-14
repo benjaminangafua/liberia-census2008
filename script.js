@@ -13,7 +13,7 @@ fetch("./census.json")
 
         const HOUSEHOLD = data.households;
         raw_households_data.push(HOUSEHOLD);
-        FindHighestPopulationCounties(POPULATION)
+        // FindHighestPopulationCounties(POPULATION)
 
         //Computing total female
         let female = CalculateTotalFemale(POPULATION);
@@ -256,13 +256,13 @@ function GetCountiesForHouseHolds(population) {
 }
 //display bar chart for houseHolds per selected county
 const DisplayHousesPopulation = () => {
-        let selected_household_county = GetSelectedCountyForHouseHolds();
+        let househood = GetSelectedCountyForHouseHolds();
         // console.log(raw_Population_data);
-        DisplayHouseHolds(selected_household_county[0], selected_household_county[1])
+        DisplayHouseHolds(househood[0], househood[1], househood[2])
 
     }
     //houseHolds bar chart
-function DisplayHouseHolds(population_county, population_per_county) {
+function DisplayHouseHolds(county, male, female) {
     var ctx = document.getElementById("houses-chart").getContext('2d')
 
     if (window.houses != undefined) {
@@ -272,15 +272,24 @@ function DisplayHouseHolds(population_county, population_per_county) {
     houses = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: population_county,
+            labels: county,
             datasets: [{
-                label: "Population Per Households",
-                backgroundColor: "#519872",
-                data: population_per_county,
-                borderRadius: 5,
-                width: 1,
-                barThickness: 18
-            }]
+                    label: "Male",
+                    backgroundColor: "#C0C0C0",
+                    data: male,
+                    borderRadius: 5,
+                    barPercentage: 0.5
+
+                },
+                {
+                    label: "Female",
+                    backgroundColor: "#519872",
+                    data: female,
+                    borderRadius: 5,
+                    barThickness: 40
+                }
+
+            ]
         },
         options: {
             // scales: {
@@ -308,18 +317,23 @@ function GetSelectedCountyForHouseHolds() {
     // console.log(county_houses_option)
 
     let settlement_name = [];
-    let total_households_population = []
+    let num_male = [];
+    let num_female = [];
     raw_households_data.forEach(ele => {
         ele.forEach(elem => {
             if (elem.county === county_houses_option) {
                 let settlement = elem.settlement
                 settlement_name.push(settlement)
-                let households_population = elem.male + elem.female
-                total_households_population.push(households_population)
+
+                let male = elem.male
+                num_male.push(male)
+
+                let female = elem.female
+                num_female.push(female)
             }
         })
     })
-    return [settlement_name, total_households_population];
+    return [settlement_name, num_male, num_female];
 }
 //Set house holds counties in select
 function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
@@ -330,28 +344,17 @@ function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
     return households_data
 }
 // The five highest populated counties  
-function FindHighestPopulationCounties(POPULATION) {
-    let element = [];
-    let county_male = {};
-    let county_female = {};
-    POPULATION.forEach(ele => {
-        county_male[ele.county] = ele.male
-        county_female[ele.county] = ele.female
-    })
-    let female = GetKeyOfList(element = [], county_female)
-    let male = GetKeyOfList(element = [], county_male)
-
-
-    console.log(female)
-
+function FindHighestPopulationCounties() {
+    let counties = GetSelectedCountyForHouseHolds()
+    console.log(counties)
 }
+FindHighestPopulationCounties()
+    // function GetKeyOfList(element = [], county_gender) {
 
-function GetKeyOfList(element = [], county_gender) {
-
-    for (const key in county_gender) {
-        if (Object.hasOwnProperty.call(county_gender, key)) {
-            element.push(county_gender[key]);
-            return [key, element]
-        }
-    }
-}
+//     for (const key in county_gender) {
+//         if (Object.hasOwnProperty.call(county_gender, key)) {
+//             element.push(county_gender[key]);
+//             return [key, element]
+//         }
+//     }
+// }
