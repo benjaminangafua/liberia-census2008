@@ -178,7 +178,7 @@ function DisplayDistricts(districts_name, district_male, district_female) {
             labels: districts_name,
             datasets: [{
                 label: "Male",
-                backgroundColor: "#828282",
+                backgroundColor: "#D3D3D3",
                 data: district_male,
                 borderRadius: 5,
                 barThickness: 18
