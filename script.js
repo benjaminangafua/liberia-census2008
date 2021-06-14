@@ -33,19 +33,21 @@ fetch("./census.json")
         //Counties in select tag
         GetDropdownOfCounties(population_county, county_districts_selection)
 
-        let househood_counties = GetCountiesWithoutDuplicate(HOUSEHOLD)
+        let househood_counties = GetCountiesForHouseHolds(HOUSEHOLD)
         console.log(househood_counties)
             //Bar Chart  for Distribution of Population by county
         DisplayCountyBarChart(population_county, population_per_county)
 
         //Put households counties in select tag
         PutHouseHoldsCountiesInSelect(househood_counties, county_households_selection)
-
-
-        //Bar Chart  for Distribution of Population by Number of Households
-
+            //Bar Chart  for Households
+        DisplayHousesPopulation()
+            //Bar Chart  for districts
+        DisplayDistrictsPopulation()
     })
-    //Computing total female
+
+//First Layout
+//Computing total female
 function CalculateTotalFemale(populationData) {
     let total_female = populationData.reduce((acc, value) => (acc + value.female), 0)
         //Print total  Female 
@@ -68,6 +70,9 @@ function ComputeTotalPopulation(male, female) {
     document.getElementById("popu").insertAdjacentHTML("afterbegin", `<b>${POPULATION_TOTAL}</b>`);
     return POPULATION_TOTAL
 }
+
+
+//Second Layout Right
 // doughnutChart of total male and female
 function GetMaleAndFemaleDoughnutChart(male, female) {
     new Chart(document.getElementById("doughnut-chart"), {
@@ -96,6 +101,8 @@ function GetMaleAndFemaleDoughnutChart(male, female) {
         }
     });
 }
+
+//Second Layout Left
 //get the array of counties without duplicate for the label on the chart
 function GetCountiesWithoutDuplicate(population) {
     let eachCounty = population.reduce((acc, value) => {
@@ -107,7 +114,7 @@ function GetCountiesWithoutDuplicate(population) {
     return eachCounty
 }
 
-// Total number of population per county
+// Amount population per county
 function PopulationPerCounty(populationData) {
     let population_per_county = populationData.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.male + c.female, a), {})
     return population_per_county;
@@ -158,35 +165,7 @@ function GetDropdownOfCounties(counties, option) {
     return county_selected;
 }
 
-//Dropdown for counties for population data
-function GetSelectedCounty() {
-    let county_districts_option = county_districts_selection.value;
-    // console.log(county_districts_option)
-
-    let districts_name = [];
-    let total_disticts_population = []
-    raw_Population_data.forEach(ele => {
-        ele.forEach(elem => {
-            if (elem.county === county_districts_option) {
-                let district = elem.district
-                districts_name.push(district)
-                let distict_population = elem.male + elem.female
-                total_disticts_population.push(distict_population)
-            }
-        })
-    })
-    return [districts_name, total_disticts_population];
-}
-//display bar chart for districts per selected county 
-const DisplayDistrictsPopulation = () => {
-
-        let district = GetSelectedCounty()
-            // let districtName = district[0]
-            // let district_total_population = district[1]
-        DisplayDistricts(district[0], district[1])
-    }
-    //Bar chart for districts
-function DisplayDistricts(districts_name, total_disticts_population) {
+function DisplayDistricts(districts_name, district_male, district_female) {
     var ctx = document.getElementById('district').getContext('2d')
 
     if (window.chart != undefined) {
@@ -198,9 +177,16 @@ function DisplayDistricts(districts_name, total_disticts_population) {
         data: {
             labels: districts_name,
             datasets: [{
-                label: "Population Per District",
+                label: "Male",
+                backgroundColor: "#828282",
+                data: district_male,
+                borderRadius: 5,
+                width: 1,
+                barThickness: 18
+            }, {
+                label: "Female",
                 backgroundColor: "#519872",
-                data: total_disticts_population,
+                data: district_female,
                 borderRadius: 5,
                 width: 1,
                 barThickness: 18
@@ -224,7 +210,50 @@ function DisplayDistricts(districts_name, total_disticts_population) {
         }
     });
 }
+//Dropdown for counties for population data
+function GetSelectedCounty() {
+    let county_districts_option = county_districts_selection.value;
+    // console.log(county_districts_option)
 
+    let districts_name = [];
+    let district_male = []
+    let district_female = []
+    raw_Population_data.forEach(ele => {
+        ele.forEach(elem => {
+            if (elem.county === county_districts_option) {
+                let district = elem.district
+                districts_name.push(district)
+
+                let male = elem.male
+                district_male.push(male)
+
+                let female = elem.female
+                district_female.push(female)
+            }
+        })
+    })
+    return [districts_name, district_male, district_female];
+}
+//display bar chart for districts per selected county 
+
+//Bar chart for districts
+const DisplayDistrictsPopulation = () => {
+
+    let district = GetSelectedCounty()
+        // let districtName = district[0]
+        // let district_total_population = district[1]
+    DisplayDistricts(district[0], district[1], district[2])
+}
+
+function GetCountiesForHouseHolds(population) {
+    let eachCounty = population.reduce((acc, value) => {
+        if (acc.indexOf(value.county) === -1) {
+            acc.push(value.county)
+        }
+        return acc
+    }, [])
+    return eachCounty
+}
 //display bar chart for houseHolds per selected county
 const DisplayHousesPopulation = () => {
         let selected_household_county = GetSelectedCountyForHouseHolds();
@@ -302,12 +331,27 @@ function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
 }
 // The five highest populated counties  
 function FindHighestPopulationCounties(POPULATION) {
+    let element = [];
     let county_male = {};
     let county_female = {};
     POPULATION.forEach(ele => {
         county_male[ele.county] = ele.male
         county_female[ele.county] = ele.female
     })
+    let female = GetKeyOfList(element = [], county_female)
+    let male = GetKeyOfList(element = [], county_male)
 
-    console.log(parseInt(county_male));
+
+    console.log(female)
+
+}
+
+function GetKeyOfList(element = [], county_gender) {
+
+    for (const key in county_gender) {
+        if (Object.hasOwnProperty.call(county_gender, key)) {
+            element.push(county_gender[key]);
+            return [key, element]
+        }
+    }
 }
