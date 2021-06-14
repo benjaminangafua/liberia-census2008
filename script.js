@@ -181,15 +181,14 @@ function DisplayDistricts(districts_name, district_male, district_female) {
                 backgroundColor: "#828282",
                 data: district_male,
                 borderRadius: 5,
-                width: 1,
                 barThickness: 18
             }, {
                 label: "Female",
                 backgroundColor: "#519872",
                 data: district_female,
                 borderRadius: 5,
-                width: 1,
-                barThickness: 18
+                barPercentage: 0.5
+                    // barThickness: 18
             }]
         },
         options: {
@@ -265,11 +264,11 @@ const DisplayHousesPopulation = () => {
 function DisplayHouseHolds(population_county, population_per_county) {
     var ctx = document.getElementById("houses-chart").getContext('2d')
 
-    if (window.chart != undefined) {
-        window.chart.destroy();
+    if (window.houses != undefined) {
+        window.houses.destroy();
     }
 
-    chart = new Chart(ctx, {
+    houses = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: population_county,
