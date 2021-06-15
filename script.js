@@ -34,7 +34,7 @@ fetch("./census.json")
         GetDropdownOfCounties(population_county, county_districts_selection)
 
         let househood_counties = GetCountiesForHouseHolds(HOUSEHOLD)
-        console.log(househood_counties)
+            // console.log(househood_counties)
             //Bar Chart  for Distribution of Population by county
         DisplayCountyBarChart(population_county, population_per_county)
 
@@ -44,6 +44,33 @@ fetch("./census.json")
         DisplayHousesPopulation()
             //Bar Chart  for districts
         DisplayDistrictsPopulation()
+            // The Five highest populated counties  
+        function FindHighestPopulationCounties() {
+            // console.log(population_county);
+            // let total_male = POPULATION.reduce((acc, value) => (acc + value.male), 0)
+            let county_male = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.male, a), {})
+            let county_female = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.female, a), {})
+            let female = [];
+            for (const county in county_female) {
+                let ele = county_female[county];
+                female.push(ele)
+            }
+            for (const key in county_male) {
+                let value = county_male[key]
+                if (value > 110000) {
+                    document.querySelector("#populate").insertAdjacentHTML("afterend", `
+                    <tr>
+                        <th>${key}</th>
+                        <th>${county_male[key]}</th> 
+                        <th>${county_male[key]}</th>
+                    <tr/>`)
+                }
+                // console.log(value)
+            }
+            // console.log(county_male);
+            console.log(female);
+        }
+        FindHighestPopulationCounties()
     })
 
 //First Layout
@@ -334,13 +361,7 @@ function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
     })
     return households_data
 }
-// The Five highest populated counties  
-function FindHighestPopulationCounties() {
-    let counties = GetSelectedCountyForHouseHolds()
-    console.log(counties)
-}
-FindHighestPopulationCounties()
-    // function GetKeyOfList(element = [], county_gender) {
+// function GetKeyOfList(element = [], county_gender) {
 
 //     for (const key in county_gender) {
 //         if (Object.hasOwnProperty.call(county_gender, key)) {

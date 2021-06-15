@@ -22,6 +22,24 @@ header {
     margin: 2% 5% 2% 10%;
 }
 
+#table-head {
+    background-color: #519872;
+    text-align: center;
+    color: white;
+}
+
+tbody {
+    border: 1px solid rgb(4, 101, 121);
+}
+
+table,
+tbody,
+tr,
+th {
+    padding: 15px;
+    border-collapse: collapse;
+}
+
 #gridData {
     display: grid;
     grid-template-columns: 29% 27% 30%;
