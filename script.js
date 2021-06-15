@@ -50,24 +50,25 @@ fetch("./census.json")
             // let total_male = POPULATION.reduce((acc, value) => (acc + value.male), 0)
             let county_male = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.male, a), {})
             let county_female = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.female, a), {})
+
+
+
             let female = [];
-            for (const county in county_female) {
-                let ele = county_female[county];
-                female.push(ele)
-            }
-            for (const key in county_male) {
-                let value = county_male[key]
-                if (value > 110000) {
+
+
+            for (const key in county_male, county_female) {
+                let mvalue = county_male[key]
+                let fvalue = county_female[key]
+
+                if (mvalue > 110000 && fvalue > 110000) {
                     document.querySelector("#populate").insertAdjacentHTML("afterend", `
                     <tr>
                         <th>${key}</th>
-                        <th>${county_male[key]}</th> 
-                        <th>${county_male[key]}</th>
+                        <th>${mvalue}</th> 
+                        <th>${fvalue}</th>
                     <tr/>`)
                 }
-                // console.log(value)
             }
-            // console.log(county_male);
             console.log(female);
         }
         FindHighestPopulationCounties()
@@ -158,7 +159,7 @@ function DisplayCountyBarChart(county, population_per_county) {
                 data: population_per_county, //data for labels (1st label)
                 borderRadius: 5,
                 width: 1,
-                barThickness: 18
+                barThickness: 25
             }]
         },
         options: {

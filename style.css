@@ -29,7 +29,8 @@ header {
 }
 
 tbody {
-    border: 1px solid rgb(4, 101, 121);
+    border: 1px solid #519872;
+    border-bottom: 2px groove rgb(4, 101, 121);
 }
 
 table,
