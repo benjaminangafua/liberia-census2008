@@ -52,13 +52,27 @@ fetch("./census.json")
             let county_female = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.female, a), {})
 
 
-
-            let female = [];
-
-
             for (const key in county_male, county_female) {
                 let mvalue = county_male[key]
                 let fvalue = county_female[key]
+                for (let i = 0; i <= 4; i++) {
+                    for (let j = i; j <= 4; j++) {
+                        if (mvalue[i] < mvalue[j]) {
+                            let swap = mvalue[i];
+                            mvalue[i] = mvalue[j];
+                            mvalue[j] = swap;
+                        }
+                    }
+                    for (let k = 0; k <= 4; k++) {
+                        if (fvalue[i] < fvalue[k]) {
+                            let swap = fvalue[i];
+                            fvalue[i] = fvalue[k];
+                            fvalue[k] = swap;
+                        }
+
+                    }
+                }
+                console.log(mvalue);
 
                 if (mvalue > 110000 && fvalue > 110000) {
                     document.querySelector("#populate").insertAdjacentHTML("afterend", `
