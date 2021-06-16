@@ -50,28 +50,13 @@ fetch("./census.json")
             // let total_male = POPULATION.reduce((acc, value) => (acc + value.male), 0)
             let county_male = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.male, a), {})
             let county_female = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.female, a), {})
-
+                // county_male.sort()
+                // county_female.sort()
 
             for (const key in county_male, county_female) {
                 let mvalue = county_male[key]
                 let fvalue = county_female[key]
-                for (let i = 0; i <= 4; i++) {
-                    for (let j = i; j <= 4; j++) {
-                        if (mvalue[i] < mvalue[j]) {
-                            let swap = mvalue[i];
-                            mvalue[i] = mvalue[j];
-                            mvalue[j] = swap;
-                        }
-                    }
-                    for (let k = 0; k <= 4; k++) {
-                        if (fvalue[i] < fvalue[k]) {
-                            let swap = fvalue[i];
-                            fvalue[i] = fvalue[k];
-                            fvalue[k] = swap;
-                        }
 
-                    }
-                }
                 console.log(mvalue);
 
                 if (mvalue > 110000 && fvalue > 110000) {
@@ -300,11 +285,11 @@ function GetCountiesForHouseHolds(population) {
 const DisplayHousesPopulation = () => {
         let househood = GetSelectedCountyForHouseHolds();
         // console.log(raw_Population_data);
-        DisplayHouseHolds(househood[0], househood[1], househood[2])
+        DisplayHouseHolds(househood[0], househood[1], househood[2], househood[3])
 
     }
     //houseHolds bar chart
-function DisplayHouseHolds(county, male, female) {
+function DisplayHouseHolds(county, male, female, house_holds) {
     var ctx = document.getElementById("houses-chart").getContext('2d')
 
     if (window.houses != undefined) {
@@ -320,7 +305,7 @@ function DisplayHouseHolds(county, male, female) {
                     backgroundColor: "#C0C0C0",
                     data: male,
                     borderRadius: 5,
-                    barPercentage: 0.5
+                    barThickness: 30
 
                 },
                 {
@@ -328,7 +313,14 @@ function DisplayHouseHolds(county, male, female) {
                     backgroundColor: "#519872",
                     data: female,
                     borderRadius: 5,
-                    barThickness: 40
+                    barThickness: 30
+                },
+                {
+                    label: "Female",
+                    backgroundColor: "#919179",
+                    data: house_holds,
+                    borderRadius: 5,
+                    barThickness: 30
                 }
 
             ]
@@ -351,6 +343,7 @@ function GetSelectedCountyForHouseHolds() {
 
     let settlement_name = [];
     let num_male = [];
+    let house_holds = []
     let num_female = [];
     raw_households_data.forEach(ele => {
         ele.forEach(elem => {
@@ -360,13 +353,13 @@ function GetSelectedCountyForHouseHolds() {
 
                 let male = elem.male
                 num_male.push(male)
-
+                house_holds.push(elem.household_number)
                 let female = elem.female
                 num_female.push(female)
             }
         })
     })
-    return [settlement_name, num_male, num_female];
+    return [settlement_name, num_male, num_female, house_holds];
 }
 //Set house holds counties in select
 function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
@@ -376,12 +369,3 @@ function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
     })
     return households_data
 }
-// function GetKeyOfList(element = [], county_gender) {
-
-//     for (const key in county_gender) {
-//         if (Object.hasOwnProperty.call(county_gender, key)) {
-//             element.push(county_gender[key]);
-//             return [key, element]
-//         }
-//     }
-// }
