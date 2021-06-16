@@ -316,7 +316,7 @@ function DisplayHouseHolds(county, male, female, house_holds) {
                     barThickness: 30
                 },
                 {
-                    label: "Female",
+                    label: "Households Number",
                     backgroundColor: "#919179",
                     data: house_holds,
                     borderRadius: 5,
