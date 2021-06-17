@@ -98,7 +98,6 @@ function ComputeTotalPopulation(male, female) {
     return POPULATION_TOTAL
 }
 
-
 //Second Layout Right
 // doughnutChart of total male and female
 function GetMaleAndFemaleDoughnutChart(male, female) {
@@ -162,22 +161,14 @@ function DisplayCountyBarChart(county, population_per_county) {
             }]
         },
         options: {
-            scales: {
-                y: {
-                    max: 1120000,
-                    min: 10000,
-                    ticks: {
-                        stepSize: 10000
-                    }
-                }
-            },
+
             plugins: {
                 legend: {
                     display: true,
 
                 }
             },
-            aspectRatio: 2.5
+            maintainAspectRatio: false
 
         }
     });
@@ -208,7 +199,7 @@ function DisplayDistricts(districts_name, district_male, district_female) {
                 backgroundColor: "#D3D3D3",
                 data: district_male,
                 borderRadius: 5,
-                barThickness: 18
+                barThickness: 30
             }, {
                 label: "Female",
                 backgroundColor: "#519872",
@@ -219,22 +210,16 @@ function DisplayDistricts(districts_name, district_male, district_female) {
             }]
         },
         options: {
-            // scales: {
-            //     // y: {
-            //     //     max: 970000,
-            //     //     min: 10,
-            //     //     ticks: {
-            //     //         stepSize: 100
-            //     //     }
-            //     // }
-            // },
             legend: { display: false },
             title: {
                 display: true,
                 text: 'Predicted Liberia population (millions) in 2008'
-            }
+            },
+            maintainAspectRatio: false,
         }
     });
+    // chart.canvas.parentNode.style.width = '64em';
+    // chart.canvas.parentNode.style.height = '20em';
 }
 //Dropdown for counties for population data
 function GetSelectedCounty() {
@@ -286,7 +271,6 @@ const DisplayHousesPopulation = () => {
         let househood = GetSelectedCountyForHouseHolds();
         // console.log(raw_Population_data);
         DisplayHouseHolds(househood[0], househood[1], househood[2], househood[3])
-
     }
     //houseHolds bar chart
 function DisplayHouseHolds(county, male, female, house_holds) {
@@ -305,7 +289,8 @@ function DisplayHouseHolds(county, male, female, house_holds) {
                     backgroundColor: "#C0C0C0",
                     data: male,
                     borderRadius: 5,
-                    barThickness: 30
+                    barThickness: 35,
+                    barPercentage: 0.1
 
                 },
                 {
@@ -313,11 +298,12 @@ function DisplayHouseHolds(county, male, female, house_holds) {
                     backgroundColor: "#519872",
                     data: female,
                     borderRadius: 5,
-                    barThickness: 30
+                    barThickness: 25,
+                    barPercentage: 0.3
                 },
                 {
                     label: "Households Number",
-                    backgroundColor: "#919179",
+                    backgroundColor: "#128949",
                     data: house_holds,
                     borderRadius: 5,
                     barThickness: 30
@@ -329,10 +315,8 @@ function DisplayHouseHolds(county, male, female, house_holds) {
             plugins: {
                 legend: {
                     display: true,
-
                 }
             }
-
         }
     });
 }

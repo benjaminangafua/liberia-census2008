@@ -14,14 +14,15 @@
 
 <body>
     <main>
-
+        <!-- Nav bar -->
         <header>
             <div>census2008</div>
             <div style="font-family: Arial;">
                 <span><a href="#">Home</a> </span> <span><a href="#arrowTxt">Download</a></span>
             </div>
         </header>
-        <div id="gridData">
+        <!-- First layout for suming-->
+        <div id="summing-population">
             <div id="totalPo">
                 <div style="background-color: #376e51; width: 50px; height:50px; border-radius: 5%; text-align: center;"><img src="./people.png" width="43" alt="people"></div>
                 <div>
@@ -46,9 +47,12 @@
         </div>
         <br>
         <div id="countiesPopu">
-            <!-- Bar-Chart of total county -->
 
-            <div class="bar-cha"><canvas id="county-chart"></canvas></div>
+            <!-- Bar-Chart of total county -->
+            <div id="countyByDis">
+                <div> <em><strong>Distribution of Population by County</strong></em></div>
+                <div class="bar-cha"><canvas id="county-chart"></canvas></div>
+            </div>
 
             <!-- doughnutChart of total male and female -->
             <div id="doughnutChart">
@@ -58,15 +62,20 @@
         </div>
         <!-- Distribution of Population by District -->
         <div id="distrByDis">
+
             <div id="distribute-district">
-                <span>Distribution of Population by District </span>
+                <div><em><strong>Distribution of Population by District</strong></em>
+
+                </div>
                 <!-- Select district -->
-                <span><select onchange="DisplayDistrictsPopulation()" id="county-districts-selection"> 
-                    <option value="select"disabled>Select</option>
-                </select></span>
+                <div id="district-label">
+                    <select onchange="DisplayDistrictsPopulation()" id="county-districts-selection"> 
+                        <option value="select"disabled>Select</option>
+                    </select>
+                </div>
             </div>
-            <br> <br>
-            <div class="district-chart"> <canvas id="district" width="400" height="150"></canvas></div>
+            <br>
+            <div class="district-chart" style="position: relative;"> <canvas id="district"></canvas></div>
 
         </div>
         <!-- Download 2008 Census data -->
@@ -87,14 +96,18 @@
         <div id="distrByHou">
             <div id="housesData">
                 <div id="housesText">
-                    <span>Distribution of Population by House </span>
-                    <!-- Select district -->
-                    <span><select onchange="DisplayHousesPopulation()" id="county-houses-selection">
-                    <option value="select" disabled>Select</option>
-                    </select></span>
+                    <div>
+                        <em><strong></strong> Distribution of Population by House</em>
 
-                </div><br> <br>
-                <div class="houses-chart"><canvas id="houses-chart"></canvas></div>
+                    </div>
+                    <!-- Select district -->
+                    <div>
+                        <select onchange="DisplayHousesPopulation()" id="county-houses-selection">
+                            <option value="select" disabled>Select</option>
+                        </select>
+                    </div>
+                </div><br> <br> <br>
+                <div class="houses-chart" style="position: relative;"><canvas id="houses-chart"></canvas></div>
             </div>
             <div id="mostPopCoun">
                 <div>Counties with most males & females

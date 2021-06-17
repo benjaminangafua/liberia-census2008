@@ -1,3 +1,5 @@
+/* General effect */
+
 * {
     box-sizing: border-box;
 }
@@ -12,6 +14,9 @@ body {
     font-family: 'Source Code Pro', monospace;
 }
 
+
+/* Cenus title and navigation field */
+
 header {
     display: grid;
     color: #519872;
@@ -22,26 +27,10 @@ header {
     margin: 2% 5% 2% 10%;
 }
 
-#table-head {
-    background-color: #519872;
-    text-align: center;
-    color: white;
-}
 
-tbody {
-    border: 1px solid #519872;
-    border-bottom: 2px groove rgb(4, 101, 121);
-}
+/* summing-population for total population for male and female and the country total*/
 
-table,
-tbody,
-tr,
-th {
-    padding: 15px;
-    border-collapse: collapse;
-}
-
-#gridData {
+#summing-population {
     display: grid;
     grid-template-columns: 29% 27% 30%;
     margin-left: 5%;
@@ -54,7 +43,7 @@ select {
     /* border: solid #B1D2C2; */
 }
 
-#gridData>#totalPo,
+#summing-population>#totalPo,
 #female,
 #male {
     display: flex;
@@ -65,70 +54,96 @@ select {
     color: rgb(26, 25, 25);
 }
 
-#gridData>#male {
+#summing-population>#male {
     width: 100%;
     gap: 4%;
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     background-color: white;
 }
 
-#gridData>#totalPo {
+#summing-population>#totalPo {
     /* width: 80%; */
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     gap: 4%;
     background-color: white;
 }
 
-#gridData>#female {
+#summing-population>#female {
     /* width: 80%; */
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     gap: 4%;
     background-color: white;
 }
+
+
+/* Second layout for countyies bar chart and doughnut chart */
 
 #countiesPopu {
     display: grid;
     grid-template-columns: 60% 30%;
     margin-left: 5%;
+    margin-bottom: 2%;
     gap: 2%;
 }
 
-#countiesPopu>.bar-cha,
-#doughnutChart {
+#countyByDis {
+    position: relative;
+    display: grid;
+    box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     background-color: white;
+    width: 100%;
+    padding: 3% 0% 0% 5%;
+}
+
+.bar-cha {
+    position: relative;
+    width: 50vw;
+    height: 55vh;
+}
+
+#doughnutChart {
+    position: relative;
+    background-color: #376e51;
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     width: 100%;
+    padding-top: 50px;
     border-radius: 5px;
-    height: 360px;
 }
 
-#doughnutChart {
-    background-color: #376e51;
-    padding-top: 50px;
-}
+
+/* Third layout for district population bar chart */
 
 #distrByDis {
-    display: block;
+    position: relative;
+    display: grid;
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     background-color: white;
     margin-left: 5%;
     border-radius: 5px;
-    margin-top: 2%;
+    padding-left: 15px;
     width: 87%;
+    padding: 1% 0% 0% 5%;
     height: 460px;
 }
 
 .district-chart {
-    position: static;
-    margin: -4% 2% 2% 2%;
-    width: 64vw;
-    height: 30vh;
+    width: 80vw;
+    height: 55vh;
+}
+
+em {
+    font-size: larger;
 }
 
 #distribute-district {
-    /* margin-left: 5%; */
-    padding: 5% 0% 0% 5%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    /* gap: 20%; */
+    padding: 2% 0% 0%;
 }
+
+
+/* Fourth layout for Downlow */
 
 #downloadData {
     display: grid;
@@ -156,7 +171,6 @@ select {
     justify-content: center;
     border-radius: 2%;
     color: #519872;
-    /* gap: 2%; */
     margin-left: 25%;
     border-radius: 5px;
     padding: 5% 0%;
@@ -176,6 +190,9 @@ select {
     border-radius: 5px;
 }
 
+
+/* fifth layout for households and highest male and female of counties */
+
 #distrByHou {
     display: grid;
     grid-template-columns: 60% 30%;
@@ -185,7 +202,15 @@ select {
 }
 
 #housesText {
-    padding: 15px 0px 0px 35px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* gap: 20%; */
+    padding: 2% 0% 0%;
+}
+
+#housesData {
+    position: relative;
+    padding: 3% 0% 0% 5%;
 }
 
 #distrByHou>#housesData,
@@ -208,6 +233,32 @@ select {
 #mostPopCoun {
     padding: 5% 0% 0% 5%;
     text-align: left;
+}
+
+
+/* Table for highest male and female of counties */
+
+#table-head {
+    background-color: #519872;
+    text-align: center;
+    color: white;
+}
+
+tbody {
+    border: 1px solid #519872;
+    border-bottom: 2px groove rgb(4, 101, 121);
+}
+
+table {
+    position: relative;
+}
+
+table,
+tbody,
+tr,
+th {
+    padding: 1em;
+    border-collapse: collapse;
 }
 
 @media (max-width: 720px) {
