@@ -2,9 +2,7 @@ let county_districts_selection = document.querySelector("#county-districts-selec
 let county_households_selection = document.querySelector("#county-houses-selection")
 let raw_households_data = []
 let raw_Population_data = []
-
-
-fetch("./census.json")
+fetch("./census-2008.json")
     .then((response) => response.json())
     .then((data) => {
 
@@ -13,7 +11,7 @@ fetch("./census.json")
 
         const HOUSEHOLD = data.households;
         raw_households_data.push(HOUSEHOLD);
-        // FindHighestPopulationCounties(POPULATION)
+        FindHighestPopulationCounties(POPULATION)
 
         //Computing total female
         let female = CalculateTotalFemale(POPULATION);
@@ -44,33 +42,7 @@ fetch("./census.json")
         DisplayHousesPopulation()
             //Bar Chart  for districts
         DisplayDistrictsPopulation()
-            // The Five highest populated counties  
-        function FindHighestPopulationCounties() {
-            // console.log(population_county);
-            // let total_male = POPULATION.reduce((acc, value) => (acc + value.male), 0)
-            let county_male = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.male, a), {})
-            let county_female = POPULATION.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.female, a), {})
-                // county_male.sort()
-                // county_female.sort()
-
-            for (const key in county_male, county_female) {
-                let mvalue = county_male[key]
-                let fvalue = county_female[key]
-
-                console.log(mvalue);
-
-                if (mvalue > 110000 && fvalue > 110000) {
-                    document.querySelector("#populate").insertAdjacentHTML("afterend", `
-                    <tr>
-                        <th>${key}</th>
-                        <th>${mvalue}</th> 
-                        <th>${fvalue}</th>
-                    <tr/>`)
-                }
-            }
-            console.log(female);
-        }
-        FindHighestPopulationCounties()
+            // The Five highest populated counties   
     })
 
 //First Layout
@@ -97,7 +69,6 @@ function ComputeTotalPopulation(male, female) {
     document.getElementById("popu").insertAdjacentHTML("afterbegin", `<b>${POPULATION_TOTAL}</b>`);
     return POPULATION_TOTAL
 }
-
 //Second Layout Right
 // doughnutChart of total male and female
 function GetMaleAndFemaleDoughnutChart(male, female) {
@@ -127,7 +98,6 @@ function GetMaleAndFemaleDoughnutChart(male, female) {
         }
     });
 }
-
 //Second Layout Left
 //get the array of counties without duplicate for the label on the chart
 function GetCountiesWithoutDuplicate(population) {
@@ -139,7 +109,6 @@ function GetCountiesWithoutDuplicate(population) {
     }, [])
     return eachCounty
 }
-
 // Amount population per county
 function PopulationPerCounty(populationData) {
     let population_per_county = populationData.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.male + c.female, a), {})
@@ -174,7 +143,6 @@ function DisplayCountyBarChart(county, population_per_county) {
     });
 
 }
-
 //Display Counties from population data to select tag
 function GetDropdownOfCounties(counties, option) {
     let county_selected = counties.forEach((county) => {
@@ -182,7 +150,7 @@ function GetDropdownOfCounties(counties, option) {
     })
     return county_selected;
 }
-
+//Display districts in chart
 function DisplayDistricts(districts_name, district_male, district_female) {
     var ctx = document.getElementById('district').getContext('2d')
 
@@ -221,6 +189,7 @@ function DisplayDistricts(districts_name, district_male, district_female) {
     // chart.canvas.parentNode.style.width = '64em';
     // chart.canvas.parentNode.style.height = '20em';
 }
+
 //Dropdown for counties for population data
 function GetSelectedCounty() {
     let county_districts_option = county_districts_selection.value;
@@ -245,17 +214,14 @@ function GetSelectedCounty() {
     })
     return [districts_name, district_male, district_female];
 }
-//display bar chart for districts per selected county 
-
 //Bar chart for districts
-const DisplayDistrictsPopulation = () => {
+function DisplayDistrictsPopulation() {
 
     let district = GetSelectedCounty()
         // let districtName = district[0]
         // let district_total_population = district[1]
     DisplayDistricts(district[0], district[1], district[2])
 }
-
 //Get counties for households without duplicate
 function GetCountiesForHouseHolds(population) {
     let eachCounty = population.reduce((acc, value) => {
@@ -266,13 +232,46 @@ function GetCountiesForHouseHolds(population) {
     }, [])
     return eachCounty
 }
+//Set house holds counties in select
+function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
+
+    let households_data = county_population.forEach((c) => {
+        selected_county.insertAdjacentHTML("beforeend", `<option>${c}</option>`)
+    })
+    return households_data
+}
+//Select county for household count
+function GetSelectedCountyForHouseHolds() {
+    let county_houses_option = county_households_selection.value;
+    // console.log(county_houses_option)
+
+    let settlement_name = [];
+    let num_male = [];
+    let house_holds = []
+    let num_female = [];
+    raw_households_data.forEach(ele => {
+        ele.forEach(elem => {
+            if (elem.county === county_houses_option) {
+                let settlement = elem.settlement
+                settlement_name.push(settlement)
+
+                let male = elem.male
+                num_male.push(male)
+                house_holds.push(elem.household_number)
+                let female = elem.female
+                num_female.push(female)
+            }
+        })
+    })
+    return [settlement_name, num_male, num_female, house_holds];
+}
 //display bar chart for houseHolds per selected county
-const DisplayHousesPopulation = () => {
-        let househood = GetSelectedCountyForHouseHolds();
-        // console.log(raw_Population_data);
-        DisplayHouseHolds(househood[0], househood[1], househood[2], househood[3])
-    }
-    //houseHolds bar chart
+function DisplayHousesPopulation() {
+    let househood = GetSelectedCountyForHouseHolds();
+    // console.log(raw_Population_data);
+    DisplayHouseHolds(househood[0], househood[1], househood[2], househood[3])
+}
+//houseHolds bar chart
 function DisplayHouseHolds(county, male, female, house_holds) {
     var ctx = document.getElementById("houses-chart").getContext('2d')
 
@@ -320,36 +319,85 @@ function DisplayHouseHolds(county, male, female, house_holds) {
         }
     });
 }
-//Select county for household count
-function GetSelectedCountyForHouseHolds() {
-    let county_houses_option = county_households_selection.value;
-    // console.log(county_houses_option)
+//Table to display 5 counties with highest male and female
+function FindHighestPopulationCounties(county_data) {
+    // let total_male = POPULATION.reduce((acc, value) => (acc + value.male), 0)
+    let male_And_female = ReturnMaleAndFemaleAsArrays(county_data)
+    let male_and_female_array = CombineMaleAndFemale(male_And_female)
 
-    let settlement_name = [];
-    let num_male = [];
-    let house_holds = []
-    let num_female = [];
-    raw_households_data.forEach(ele => {
-        ele.forEach(elem => {
-            if (elem.county === county_houses_option) {
-                let settlement = elem.settlement
-                settlement_name.push(settlement)
+    let sorted_array = SortMaleValueInDescendingOrder(male_and_female_array)
+        // console.log(county_arr); 
+    let county_name = ReturnSortedArrayAsObj(sorted_array)
 
-                let male = elem.male
-                num_male.push(male)
-                house_holds.push(elem.household_number)
-                let female = elem.female
-                num_female.push(female)
-            }
-        })
-    })
-    return [settlement_name, num_male, num_female, house_holds];
+    let county = []
+    county.push(county_name)
+    DisplayCountyMostMaleAndFemale(county)
 }
-//Set house holds counties in select
-function PutHouseHoldsCountiesInSelect(county_population, selected_county) {
+// Return Male And Female as seperate array
+function ReturnMaleAndFemaleAsArrays(county_data) {
 
-    let households_data = county_population.forEach((c) => {
-        selected_county.insertAdjacentHTML("beforeend", `<option>${c}</option>`)
-    })
-    return households_data
+    let county_male = county_data.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.male, a), {})
+    let county_female = county_data.reduce((a, c) => (a[c.county] = (a[c.county] || 0) + c.female, a), {})
+
+    return [county_male, county_female]
+
+}
+// Combine Male And Female In One Array
+function CombineMaleAndFemale(gender) {
+    let male = gender[0];
+    let female = gender[1];
+    let county_arr = []
+    for (const key in male, female) {
+        let male_value = male[key]
+        let female_value = female[key]
+        county_arr.push([key, male_value, female_value])
+    }
+
+    return county_arr
+}
+// Sort the counties with most male and female in descending order
+function SortMaleValueInDescendingOrder(genderArray) {
+    let sorted_Value = genderArray.sort(function(a, b) {
+        return a[1] - b[1];
+    });
+    return sorted_Value;
+}
+// Convert sorted array to object
+function ReturnSortedArrayAsObj(sorted_array) {
+
+    const county_name = {}
+    for (let i = 0; i < sorted_array.length; i++) {
+
+        let counties = sorted_array[i][0]
+        let male = sorted_array[i][1]
+        let female = sorted_array[i][2]
+
+        county_name[counties] = {
+            "male": male,
+            "female": female
+        }
+    }
+    return county_name;
+}
+// Display counties with most male and female in table
+function DisplayCountyMostMaleAndFemale(county) {
+
+    county.map(element => {
+        for (const key in element) {
+            let male_gender = element[key].male
+            let female_gender = element[key].female
+            console.log(element[key])
+
+            if (male_gender > 110000) {
+                document.querySelector("#populate").insertAdjacentHTML("afterend", `
+        <tr>
+            <th>${key}</th>
+            <th>${male_gender}</th> 
+            <th>${female_gender}</th>
+        <tr/>`)
+            }
+        }
+
+    });
+
 }
