@@ -240,7 +240,6 @@ select {
 tbody {
     border: 1px solid #519872;
     border-bottom: 2px groove rgb(4, 101, 121);
-    padding: 0.5em;
 }
 
 table {
@@ -251,6 +250,7 @@ table,
 tbody,
 tr,
 th {
+    padding: 0.5em;
     border-collapse: collapse;
 }
 
