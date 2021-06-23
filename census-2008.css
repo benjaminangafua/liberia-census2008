@@ -131,13 +131,9 @@ select {
     height: 55vh;
 }
 
-em {
-    font-size: larger;
-}
-
 #distribute-district {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     /* gap: 20%; */
     padding: 2% 0% 0%;
 }
@@ -203,7 +199,7 @@ em {
 
 #housesText {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     padding: 2% 0% 0%;
 }
 
@@ -218,7 +214,6 @@ em {
     border-radius: 5px;
     box-shadow: 2px 3px rgba(173, 171, 171, 0.533);
     width: 100%;
-    /* height: 510px; */
 }
 
 .houses-chart {
@@ -229,7 +224,7 @@ em {
 }
 
 #mostPopCoun {
-    padding: 5% 0% 0% 5%;
+    padding: 5% 0% 0% 2%;
     text-align: left;
 }
 
@@ -245,6 +240,7 @@ em {
 tbody {
     border: 1px solid #519872;
     border-bottom: 2px groove rgb(4, 101, 121);
+    padding: 0.5em;
 }
 
 table {
@@ -255,7 +251,6 @@ table,
 tbody,
 tr,
 th {
-    padding: 1em;
     border-collapse: collapse;
 }
 

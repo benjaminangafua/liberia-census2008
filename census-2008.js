@@ -384,16 +384,17 @@ function DisplayCountyMostMaleAndFemale(county) {
 
     county.map(element => {
         for (const key in element) {
-            let male_gender = element[key].male
-            let female_gender = element[key].female
+            let male_gender = Number(element[key].male)
+            let female_gender = Number(element[key].female)
             console.log(element[key])
-
+            let male_num = new Intl.NumberFormat().format(male_gender)
+            let female_num = new Intl.NumberFormat().format(female_gender)
             if (male_gender > 110000) {
                 document.querySelector("#populate").insertAdjacentHTML("afterend", `
         <tr>
             <th>${key}</th>
-            <th>${male_gender}</th> 
-            <th>${female_gender}</th>
+            <th>${male_num}</th> 
+            <th>${female_num}</th>
         <tr/>`)
             }
         }

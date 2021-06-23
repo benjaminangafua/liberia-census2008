@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liberia's Population 2008</title>
     <link rel="stylesheet" type="text/css" href="./census-2008.css">
+    <link rel="icon" href="./census.jpg">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@0;1&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
@@ -50,7 +51,7 @@
 
             <!-- Bar-Chart of total county -->
             <div id="countyByDis">
-                <div> <em><strong>Distribution of Population by County</strong></em></div>
+                <div> <strong>Distribution of Population by County</strong></div>
                 <div class="bar-cha"><canvas id="county-chart"></canvas></div>
             </div>
 
@@ -64,9 +65,7 @@
         <div id="distrByDis">
 
             <div id="distribute-district">
-                <div><em><strong>Distribution of Population by District</strong></em>
-
-                </div>
+                <div> Distribution of Population by District </div>
                 <!-- Select district -->
                 <div id="district-label">
                     <select onchange="DisplayDistrictsPopulation()" id="county-districts-selection"> 
@@ -95,10 +94,7 @@
         <div id="distrByHou">
             <div id="housesData">
                 <div id="housesText">
-                    <div>
-                        <em><strong> Distribution of Population by House</strong></em>
-
-                    </div>
+                    <div> Distribution of Population by House </div>
                     <!-- Select district -->
                     <div>
                         <select onchange="DisplayHousesPopulation()" id="county-houses-selection">
@@ -129,6 +125,7 @@
 
         </div>
     </main>
+    <b style="color: #519872; margin: auto 40%;">&copy;benjamin</b>
     <script type="text/javascript" src="./census-2008.js"></script>
 
 </body>
