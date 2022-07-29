@@ -13,6 +13,8 @@ a {
 body {
     background-color: #e7e6ee;
     font-family: 'Source Code Pro', monospace;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -22,8 +24,8 @@ header {
     display: grid;
     color: #519872;
     font-weight: bolder;
-    font-size: x-large;
-    font-weight: bolder;
+    font-size: large;
+    text-transform: uppercase;
     grid-template-columns: 3fr 1fr;
     margin: 2% 5% 2% 10%;
 }
@@ -76,7 +78,11 @@ select {
 }
 
 
-/* Second layout for countyies bar chart and doughnut chart */
+/* Second layout for counties bar chart and doughnut chart */
+
+.county-headline {
+    text-align: center;
+}
 
 #countiesPopu {
     display: grid;
@@ -154,7 +160,7 @@ select {
 }
 
 #downloadData>div {
-    padding-top: 3%;
+    padding-top: 1%;
     font-size: 25px;
     font-weight: bolder;
 }
@@ -260,5 +266,60 @@ th {
     }
     b {
         font-size: 12;
+    }
+}
+
+@media (max-width:480px) {
+    #summing-population {
+        display: grid;
+        grid-template-columns: 97%;
+        gap: 5%;
+        margin-left: 0;
+    }
+    #countiesPopu {
+        display: grid;
+        grid-template-columns: 97%;
+        margin-left: 0;
+        margin-top: 5%;
+    }
+    .bar-cha {
+        width: 90% !important;
+    }
+    #doughnutChart {
+        width: 100%;
+    }
+    #distrByHou {
+        display: grid;
+        grid-template-columns: 97%;
+        margin-left: 0;
+    }
+    #distrByDis {
+        margin-top: 5%;
+        margin-left: 0%;
+        width: 97%;
+    }
+    #downloadData {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2%;
+        padding: 2%;
+        background-color: #519874;
+        color: white;
+        margin-left: 0;
+        border-radius: 5px;
+        font-size: large;
+        width: 97%;
+    }
+    #downloadData>div {
+        padding-top: 1%;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+    #district {
+        height: 370px !important;
+    }
+    #county-chart {
+        width: 340px !important;
+        margin-left: 0 !important;
     }
 }
