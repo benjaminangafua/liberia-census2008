@@ -278,7 +278,6 @@ function DisplayHouseHolds(county, male, female, house_holds) {
     if (window.houses != undefined) {
         window.houses.destroy();
     }
-
     houses = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -318,6 +317,7 @@ function DisplayHouseHolds(county, male, female, house_holds) {
             }
         }
     });
+    console.log(houses.options);
 }
 //Table to display 5 counties with highest male and female
 function FindHighestPopulationCounties(county_data) {
@@ -386,7 +386,7 @@ function DisplayCountyMostMaleAndFemale(county) {
         for (const key in element) {
             let male_gender = Number(element[key].male)
             let female_gender = Number(element[key].female)
-            console.log(element[key])
+                // console.log(element[key])
             let male_num = new Intl.NumberFormat().format(male_gender)
             let female_num = new Intl.NumberFormat().format(female_gender)
             if (male_gender > 110000) {
