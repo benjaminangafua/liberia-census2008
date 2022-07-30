@@ -269,7 +269,7 @@ th {
     }
 }
 
-@media (max-width:480px) {
+@media (max-width: 850px) {
     #summing-population {
         display: grid;
         grid-template-columns: 97%;
@@ -282,12 +282,6 @@ th {
         margin-left: 0;
         margin-top: 5%;
     }
-    .bar-cha {
-        width: 90% !important;
-    }
-    #doughnutChart {
-        width: 100%;
-    }
     #distrByHou {
         display: grid;
         grid-template-columns: 97%;
@@ -297,6 +291,49 @@ th {
         margin-top: 5%;
         margin-left: 0%;
         width: 97%;
+    }
+    .district-chart {
+        width: 90vw;
+        height: 30vh;
+    }
+    .bar-cha {
+        width: 90vw;
+    }
+}
+
+@media (max-width:480px) {
+    .county-headline {
+        text-align: left;
+        font-size: medium;
+    }
+    #summing-population {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 5%;
+        margin-left: 0;
+    }
+    #countiesPopu {
+        display: grid;
+        grid-template-columns: 100%;
+        margin-left: 0;
+        margin-top: 5%;
+    }
+    .district-chart {
+        width: 90vw;
+        height: 30vh;
+    }
+    #doughnutChart {
+        width: 100%;
+    }
+    #distrByHou {
+        display: grid;
+        grid-template-columns: 100%;
+        margin-left: 0;
+    }
+    #distrByDis {
+        margin-top: 5%;
+        margin-left: 0%;
+        width: 100%;
     }
     #downloadData {
         display: flex;
@@ -308,7 +345,7 @@ th {
         margin-left: 0;
         border-radius: 5px;
         font-size: large;
-        width: 97%;
+        width: 100%;
     }
     #downloadData>div {
         padding-top: 1%;
@@ -316,10 +353,30 @@ th {
         font-weight: bolder;
     }
     #district {
-        height: 370px !important;
+        height: 30vh;
     }
     #county-chart {
-        width: 340px !important;
         margin-left: 0 !important;
+    }
+    .houses-chart {
+        width: 80vw;
+    }
+    #county-chart {
+        font-size: 11px !important;
+        width: 99vw !important;
+    }
+    .bar-cha {
+        margin-left: -25px;
+        width: 100vw;
+    }
+}
+
+@media (max-width:360px) {
+    .county-headline {
+        font-size: small;
+    }
+    .bar-cha {
+        margin-left: -30px;
+        width: 113.6vw;
     }
 }

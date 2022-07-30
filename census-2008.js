@@ -126,7 +126,7 @@ function DisplayCountyBarChart(county, population_per_county) {
                 data: population_per_county, //data for labels (1st label)
                 borderRadius: 5,
                 width: 1,
-                barThickness: 25
+                barThickness: 15
             }]
         },
         options: {
