@@ -299,6 +299,13 @@ th {
     .bar-cha {
         width: 90vw;
     }
+    #downloadData {
+        margin-left: 0%;
+        width: 98%;
+    }
+    #arrowTxt {
+        width: 74%;
+    }
 }
 
 @media (max-width:480px) {
