@@ -228,7 +228,7 @@ select {
 }
 
 #mostPopCoun {
-    padding: 5% 0% 0% 2%;
+    padding: 5% 0% 5% 2%;
     text-align: left;
 }
 
@@ -272,25 +272,25 @@ th {
 @media (max-width: 850px) {
     #summing-population {
         display: grid;
-        grid-template-columns: 97%;
+        grid-template-columns: 100%;
         gap: 5%;
         margin-left: 0;
     }
     #countiesPopu {
         display: grid;
-        grid-template-columns: 97%;
+        grid-template-columns: 100%;
         margin-left: 0;
-        margin-top: 5%;
+        margin-top: 2%;
     }
     #distrByHou {
         display: grid;
-        grid-template-columns: 97%;
+        grid-template-columns: 100%;
         margin-left: 0;
     }
     #distrByDis {
         margin-top: 5%;
         margin-left: 0%;
-        width: 97%;
+        width: 100%;
     }
     .district-chart {
         width: 90vw;
@@ -301,7 +301,7 @@ th {
     }
     #downloadData {
         margin-left: 0%;
-        width: 98%;
+        width: 100%;
     }
     #arrowTxt {
         width: 74%;
@@ -323,7 +323,7 @@ th {
         display: grid;
         grid-template-columns: 100%;
         margin-left: 0;
-        margin-top: 5%;
+        margin-top: 2%;
     }
     .district-chart {
         width: 90vw;
