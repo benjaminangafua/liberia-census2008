@@ -267,17 +267,14 @@ function GetSelectedCountyForHouseHolds() {
   let num_male = [];
   let house_holds = [];
   let num_female = [];
+
   raw_households_data.forEach((ele) => {
     ele.forEach((elem) => {
       if (elem.county === county_houses_option) {
-        let settlement = elem.settlement;
-        settlement_name.push(settlement);
-
-        let male = elem.male;
-        num_male.push(male);
+        settlement_name.push(elem.settlement);
         house_holds.push(elem.household_number);
-        let female = elem.female;
-        num_female.push(female);
+        num_male.push(elem.male);
+        num_female.push(elem.female);
       }
     });
   });
